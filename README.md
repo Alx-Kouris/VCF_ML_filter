@@ -6,6 +6,31 @@
 
 ## Repository Structure
 
+```
+VCF_ML_filter/
+├── data/
+│   ├── EKETA/                # Annotated VCF from EKETA
+│   ├── GIAB/                 # GIAB high-confidence calls (hg19 & hg38)
+│   ├── SEQC/                 # SEQC annotated variant calls
+│   ├── models/               # Trained models and scalers
+│   ├── training/             # VCFs used for training
+│   └── validation/           # VCFs used for validation/testing
+│
+├── src/
+│   ├── notebooks/
+│   │   ├── lightgbm/         # LightGBM training, SHAP, PCA, prediction
+│   │   ├── neural/           # Neural network training and usage
+│   │   ├── preprocessing/    # Preprocessing/normalization notebooks
+│   │   └── utils/            # Feature analysis, flagging, MI, splits
+│   └── python/
+│       ├── paths.py          # Centralized file path definitions
+│       └── vcf_helpers.py    # Helper functions for VCF handling and ML
+│
+├── .gitignore
+├── LICENSE
+└── README.md
+```
+
 The repository is organized into two main directories (`data` and `src`), along with some standard configuration files (like `.gitignore` and `LICENSE`). Below is a breakdown of the structure and contents:
 
 ### `data/` – Contains input datasets, model files, and prepared data splits for training and validation
