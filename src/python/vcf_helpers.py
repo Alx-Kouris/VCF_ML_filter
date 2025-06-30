@@ -62,7 +62,7 @@ def determine_tumor_sample_index(sample_names):
 
     return tumor_sample_index
 
-def normalize_vcf_features(df):
+def normalize_vcf_features_old(df):
     # --- Feature Groups ---
     log1p_cols = [
         "DP", "AD_ref", "AD_alt", "FAD_ref", "FAD_alt",
@@ -95,7 +95,7 @@ def normalize_vcf_features(df):
     return df
 
 
-def normalize_vcf_features_new(df):
+def normalize_vcf_features(df):
     # --- Feature Groups ---
     log1p_cols = [
         "DP", "AD_ref", "AD_alt", "FAD_ref", "FAD_alt",
@@ -109,7 +109,7 @@ def normalize_vcf_features_new(df):
 
     passthrough_cols = [
         "AF", "POPAF", "NALOD", "NLOD", "TLOD", "CONTQ", "GERMQ",
-        "MPOS", "OCM", "ROQ", "GQ", "STRQ", "STRANDQ", "SEQQ", "PON"
+        "MPOS", "OCM", "ROQ", "GQ", "STRANDQ", "SEQQ", "PON"
     ]
 
     # --- Derived features from arrays (optional preprocessing step) ---
@@ -149,7 +149,7 @@ def normalize_vcf_features_new(df):
     return df
 
 
-def normalize_vcf_features_for_prediction(df, robust_scaler_path: str):
+def normalize_vcf_features_for_prediction_old(df, robust_scaler_path: str):
     # --- Feature Groups ---
     log1p_cols = [
         "DP", "AD_ref", "AD_alt", "FAD_ref", "FAD_alt",
@@ -174,7 +174,7 @@ def normalize_vcf_features_for_prediction(df, robust_scaler_path: str):
 
     return df
 
-def normalize_vcf_features_for_prediction_new(df):
+def normalize_vcf_features_for_prediction(df):
     # --- Reuse same transformation logic ---
     log1p_cols = [
         "DP", "AD_ref", "AD_alt", "FAD_ref", "FAD_alt",
@@ -188,7 +188,7 @@ def normalize_vcf_features_for_prediction_new(df):
 
     passthrough_cols = [
         "AF", "POPAF", "NALOD", "NLOD", "TLOD", "CONTQ", "GERMQ",
-        "MPOS", "OCM", "ROQ", "GQ", "STRQ", "STRANDQ", "SEQQ", "PON"
+        "MPOS", "OCM", "ROQ", "GQ", "STRANDQ", "SEQQ", "PON"
     ]
 
     # --- Derived features from arrays ---
@@ -212,7 +212,7 @@ def normalize_vcf_features_for_prediction_new(df):
     all_scaler_cols = [col for col in (log1p_cols + passthrough_cols + array_agg_cols) if col in df.columns]
 
     # --- Handle missing values ---
-    df[all_scaler_cols] = df[all_scaler_cols].fillna(-1)
+    # df[all_scaler_cols] = df[all_scaler_cols].fillna(-1)
 
     # --- Load the saved scaler and transform ---
     scaler_path = models_path / "standard_scaler.pkl"
