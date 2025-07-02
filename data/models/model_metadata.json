@@ -1,1 +1,1 @@
-{"features": ["F1R2_alt", "F2R1_alt", "AD_alt", "AF", "NALOD", "TLOD", "NLOD", "ECNT", "MMQ_alt"], "threshold": 0.5272908827298157}
+{"features": ["F1R2_alt", "F2R1_alt", "AD_alt", "AF", "TLOD", "ECNT", "MMQ_alt", "MBQ_alt", "MPOS", "MFRL_alt"], "threshold": 0.4996745748519569}
